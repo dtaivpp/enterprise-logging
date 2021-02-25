@@ -1,0 +1,17 @@
+setup.ilm.overwrite: true
+setup.ilm.enabled: false
+
+filebeat.inputs:
+- type: netflow
+  max_message_size: 10KiB
+  host: "0.0.0.0:2055"
+  protocols: [ v5, v9, ipfix ]
+  expiration_timeout: 30m
+  queue_size: 8192
+  detect_sequence_reset: true
+
+output.elasticsearch:
+  hosts: ['https://odfe-node1:9200']
+  ssl.verification_mode: none
+  username: "admin"
+  password: "admin"
