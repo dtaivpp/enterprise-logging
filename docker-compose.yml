@@ -73,7 +73,7 @@ services:
     command: ./nflow-generator -t fluentd -p 2055
     networks:
       - odfe-net
-    links: 
+    links:
       - fluentd
 
 volumes:
