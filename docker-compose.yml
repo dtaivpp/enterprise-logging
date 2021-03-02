@@ -63,18 +63,22 @@ services:
     container_name: fluentd
     ports: 
       - 2055:2055
+      - 5140:5140
     networks:
       - odfe-net
     links: 
       - odfe-node1
-  nflow-generator:
-    image: networkstatic/nflow-generator
-    container_name: nflow-generator
-    command: ./nflow-generator -t fluentd -p 2055
-    networks:
-      - odfe-net
-    links:
-      - fluentd
+    expose: 
+      - "2055"
+      - "5140"
+#  nflow-generator:
+#    image: networkstatic/nflow-generator
+#    container_name: nflow-generator
+#    command: ./nflow-generator -t fluentd -p 2055
+#    networks:
+#      - odfe-net
+#    links:
+#      - fluentd
 
 volumes:
   odfe-data1:
