@@ -62,15 +62,15 @@ services:
       context: fluentd/
     container_name: fluentd
     ports: 
-      - 2055:2055
-      - 5140:5140
+      - 2055:2055/udp
+      - 5140:5140/udp
     networks:
       - odfe-net
     links: 
       - odfe-node1
     expose: 
-      - "2055"
-      - "5140"
+      - "2055/udp"
+      - "5140/udp"
 #  nflow-generator:
 #    image: networkstatic/nflow-generator
 #    container_name: nflow-generator
